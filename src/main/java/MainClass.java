@@ -1,5 +1,7 @@
 import Graph.Graph;
 
+import java.util.List;
+
 public class MainClass {
     public static void main(String arr[]) {
         Graph g = new Graph();
@@ -20,6 +22,16 @@ public class MainClass {
         g.removeVertex("kolkata");
         System.out.print(g.ShortestPath("kolkata", "delhi"));
 
+        List<String> result = g.BFS("kolkata");
+        List<String> result1 = g.DFS("kolkata");
+
+        for(String s: result) {
+            System.out.print(s+" ");
+        }
+        System.out.println();
+        for(String s: result1) {
+            System.out.print(s+" ");
+        }
     }
 }
 

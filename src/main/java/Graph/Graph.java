@@ -115,4 +115,47 @@ public class Graph {
         Collections.reverse(result);
         return result;
     }
+
+    public List<String> BFS(String start) {
+        ArrayList<String> result = new ArrayList<String>();
+        Queue<String> queue = new LinkedList<String>();
+        HashMap<String, Boolean> marker = new HashMap<String, Boolean>();
+        String element;
+        queue.add(start);
+        marker.put(start,true);
+
+        while(queue.size()>0) {
+            element = queue.poll();
+            result.add(element);
+            for(Node n: this.adjecencyList.get(element)) {
+                if(!marker.containsKey(n.value)) {
+                    marker.put(n.value, true);
+                    queue.add(n.value);
+                }
+            }
+        }
+        return result;
+    }
+
+    public List<String> DFS(String start) {
+        Stack<String> s= new Stack<String>();
+        HashMap<String,Boolean> marker = new HashMap<String, Boolean>();
+        ArrayList<String> result = new ArrayList<String>();
+        String element;
+
+        s.add(start);
+        marker.put(start, true);
+        while(s.size()>0) {
+            element = s.pop();
+            result.add(element);
+            for(Node n: this.adjecencyList.get(element)) {
+                if(!marker.containsKey(n.value)) {
+                    marker.put(n.value, true);
+                    s.push(n.value);
+                }
+            }
+
+        }
+        return result;
+    }
 }
